@@ -38,3 +38,13 @@ def test_capitalize_negative(string_utils):
 
 def test_delete_symbol_negative(string_utils):
     assert string_utils.delete_symbol("Oleg", "X") == "Oleg"  # Попытка удалить несуществующий символ
+
+
+# Переписал тест на удаление пробелов с использованием параметризации
+@pytest.mark.parametrize("input_string, expected", [
+    ("   oleg", "oleg"),
+    ("oleg", "oleg"),
+    ("   ", "")
+])
+def test_trim(string_utils, input_string, expected):
+    assert string_utils.trim(input_string) == expected
